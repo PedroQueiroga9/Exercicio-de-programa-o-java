@@ -43,10 +43,27 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return "Aluno [aluno=" + aluno + ", idade=" + idade + ", faculdade=" + faculdade + "]";
+		return "Aluno [aluno=" + aluno + ", media()=" + media() + ", situacaoaluno()=" + situacaoaluno() + "]";
 	}
 	
+	public double media() {	
+		double somanotas = 0.0;
+		for (Disciplina disciplina : disciplinas) {
+		 somanotas += disciplina.getNota();
+		}
+		return somanotas / disciplinas.size();
+	}
 	
+	public String situacaoaluno() {
+		String situacao;
+		if(media() < 70 ) {
+			situacao = "aprovado";
+		}
+		else { 
+			situacao = "Reprovado";
+		}
+		return situacao;
+	}
 	
 
 }
